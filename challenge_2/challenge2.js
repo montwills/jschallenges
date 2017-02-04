@@ -1,7 +1,9 @@
 $(function(){
   var title = $("h1");
   var currentColor = title.css("color");
+  var sectionLinks = $(".title");
 
+  // Toggles heading color between red and black
 
   title.click(function() {
     if ($(this).css("color") === currentColor) {
@@ -12,11 +14,20 @@ $(function(){
     }
   })
 
+  // Hides all odd number section links. zero-indexed.
 
-  $(".title").filter(":even").hide();
-
+  sectionLinks.filter(":even").hide();
 
   
-	//all your code should go here
+  // iterates through all <p>
 
+  $("p").each(function() { 
+    var comment = $(this).text(); 
+    // comment is the text from each <p> this refers to the current element "p"
+    $(this).text(comment.replace("Bacon", "LASER VISION"));
+  })
+
+  // Removed last 2 posts.
+
+  $(".post").slice(-3).detach();
 })
