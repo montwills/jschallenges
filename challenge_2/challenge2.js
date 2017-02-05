@@ -27,7 +27,7 @@ $(function(){
     $(this).text(comment.replace("Bacon", "LASER VISION"));
   })
 
-  // Removed last 2 posts.
+  // // Removed last 2 posts.
 
-  $(".post").slice(-3).detach();
+  $(".post").slice(-3).remove();
 })
