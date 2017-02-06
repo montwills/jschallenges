@@ -1,33 +1,41 @@
 $(function(){
-  var title = $("h1");
-  var currentColor = title.css("color");
-  var sectionLinks = $(".title");
+  var defaultTitleColor = $("h1").css("color");
 
-  // Toggles heading color between red and black
 
-  title.click(function() {
-    if ($(this).css("color") === currentColor) {
+  // toggles heading color between red and black
+
+  $("h1").click(function() {
+    if ($(this).css("color") == defaultTitleColor) {
       $(this).css("color", "red");
-    }
-    else {
-      $(this).css("color", currentColor);
+    } else {
+      $(this).css("color", defaultTitleColor);
     }
   })
 
-  // Hides all odd number section links. zero-indexed.
 
-  sectionLinks.filter(":even").hide();
+  // Hides all odd number section links (zero-indexed).
+
+  $(".title").filter(":even").slideUp(1200);
 
   
-  // iterates through all <p>
+  // Replace all 'Bacon' with 'LASER VISION'
 
-  $("p").each(function() { 
-    var comment = $(this).text(); 
-    // comment is the text from each <p> this refers to the current element "p"
-    $(this).text(comment.replace("Bacon", "LASER VISION"));
+  $(".post").children().each(function() {
+    $(this).html( $(this).html().replace(/Bacon/g, "LASER VISION") );
   })
 
-  // // Removed last 2 posts.
+  // Removed last 2 posts.
 
   $(".post").slice(-3).remove();
+
+  
+  // Removes [ad] images in right column
+
+  $("aside img").fadeOut(2000);
+
+
+  // Remove last 2 <hr/>
+
+  $("hr:nth-last-child(2n - 1)").remove();
+  $("hr:nth-last-child(1)").remove();
 })
